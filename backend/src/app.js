@@ -3,10 +3,7 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 
-const authRoutes = require('../routes/auth');
-const userRoutes = require('../routes/users');
-const jobRoutes = require('../routes/jobs');
-const applicationRoutes = require('../routes/applications');
+const authRoutes = require('./routes/auth.routes');
 
 const app = express();
 
@@ -21,9 +18,6 @@ app.get('/api/health', (req, res) => {
 });
 
 app.use('/api/auth', authRoutes);
-app.use('/api/users', userRoutes);
-app.use('/api/jobs', jobRoutes);
-app.use('/api/applications', applicationRoutes);
 
 app.use((req, res) => {
   res.status(404).json({
